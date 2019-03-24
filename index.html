@@ -4,11 +4,30 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>点数計算ツール</title>
+		<title>点数計算ツール</title>
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 </head>
 <body>
-高校ロボコン2019用
-<h1>点数計算ツール</h1>
-<a href="https://github.com/JF1HNL/koukourobo_2019/blob/master/README.md">使い方はこちら</a>
+	<div id="robokon">
+		高校ロボコン2019用
+		<h1>点数計算ツール</h1>
+		<a href="https://github.com/JF1HNL/koukourobo_2019/blob/master/README.md">使い方はこちら</a>
+		<ol>
+			<li>自立型ロボットが「砂金」を保持して「港エリア」に到達</li>
+			<div @click=""></div>
+			<li>「海産物」が「海産物置場」に置かれている数</li>
+			<li>稲穂上の「割薬」が6個未満で、稲穂が倒れていない状態</li>
+			<li>「割薬」が「三尺玉」の穴に置かれている数</li>
+			<li>「割薬」6個が1個おきに「三尺玉」の穴に置かれている状態</li>
+			<li>「砂金」が「三尺玉」の穴に置かれている数</li>
+			<li>「砂金」６個が１個おきに「三尺玉」の穴に置かれている状態</li>
+			<li>「芯星」が「三尺玉」の穴に置かれている数</li>
+			<li>「芯星」５個全てが「三尺玉」の穴に置かれている状態</li>
+			<li>「割薬（籾殻）」、「芯星」、「砂金」が「三尺玉」の穴に全て正しく置かれていて、「芯星」と「砂金」が全て交互になっている状態</li>
+			<li>「ドンデンポール」を通過した「朱鷺」の数</li>
+			<li>射出した「朱鷺」がコート外に出た数</li>
+		</ol>
+	</div>
+	<script src="index.js"></script>
 </body>
 </html>
