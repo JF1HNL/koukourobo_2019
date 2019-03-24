@@ -3,7 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+		<style>
+			.select{background-color:darkgray}
+      .item_box{border: solid 1px black;}
+		</style>
 		<title>点数計算ツール</title>
 		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 </head>
@@ -14,19 +18,40 @@
 		<a href="https://github.com/JF1HNL/koukourobo_2019/blob/master/README.md">使い方はこちら</a>
 		<ol>
 			<li>自立型ロボットが「砂金」を保持して「港エリア」に到達</li>
-			<div @click=""></div>
+			<div class="item_box" @click="button.jiritsu.flag = !button.jiritsu.flag" :class="{select:button.jiritsu.flag}">チェック</div>
 			<li>「海産物」が「海産物置場」に置かれている数</li>
+			<div class="item_box" v-for="item in button_5" @click="button.kaisanbutsu.flag = zero_number(item, button.kaisanbutsu.flag)" :class="{select:item === button.kaisanbutsu.flag}">{{ item }}</div>
 			<li>稲穂上の「割薬」が6個未満で、稲穂が倒れていない状態</li>
+			<div class="item_box" @click="button.warigusuri_hakobi.flag = !button.warigusuri_hakobi.flag" :class="{select:button.warigusuri_hakobi.flag}">チェック</div>
 			<li>「割薬」が「三尺玉」の穴に置かれている数</li>
+			<div class="item_box" v-for="item in button_6" @click="button.warigusuri.flag = zero_number(item, button.warigusuri.flag)" :class="{select:item === button.warigusuri.flag}">{{ item }}</div>
 			<li>「割薬」6個が1個おきに「三尺玉」の穴に置かれている状態</li>
+			<div class="item_box" @click="button.warigusuri_ikko.flag = !button.warigusuri_ikko.flag" :class="{select:button.warigusuri_ikko.flag}">チェック</div>
 			<li>「砂金」が「三尺玉」の穴に置かれている数</li>
+			<div class="item_box" v-for="item in button_6" @click="button.sakin.flag = zero_number(item, button.sakin.flag)" :class="{select:item === button.sakin.flag}">{{ item }}</div>
 			<li>「砂金」６個が１個おきに「三尺玉」の穴に置かれている状態</li>
+			<div class="item_box" @click="button.sakin_ikko.flag = !button.sakin_ikko.flag" :class="{select:button.sakin_ikko.flag}">チェック</div>
 			<li>「芯星」が「三尺玉」の穴に置かれている数</li>
+			<div class="item_box" v-for="item in button_5" @click="button.sinhosi.flag = zero_number(item, button.sinhosi.flag)" :class="{select:item === button.sinhosi.flag}">{{ item }}</div>
 			<li>「芯星」５個全てが「三尺玉」の穴に置かれている状態</li>
+			<div class="item_box" @click="button.sinhosi_subete.flag = !button.sinhosi_subete.flag" :class="{select:button.sinhosi_subete.flag}">チェック</div>
 			<li>「割薬（籾殻）」、「芯星」、「砂金」が「三尺玉」の穴に全て正しく置かれていて、「芯星」と「砂金」が全て交互になっている状態</li>
+			<div class="item_box" @click="button.sansyakudama_complete.flag = !button.sansyakudama_complete.flag" :class="{select:button.sansyakudama_complete.flag}">チェック</div>
 			<li>「ドンデンポール」を通過した「朱鷺」の数</li>
+			<div class="item_box" v-for="item in button_10" @click="button.toki_increase.flag = zero_number(item, button.toki_increase.flag)" :class="{select:item === button.toki_increase.flag}">{{ item }}</div>
 			<li>射出した「朱鷺」がコート外に出た数</li>
+			<div class="item_box" v-for="item in button_10" @click="button.toki_decrease.flag = zero_number(item, button.toki_decrease.flag)" :class="{select:item === button.toki_decrease.flag}">{{ item }}</div>
 		</ol>
+		<div v-if="toki_judge">
+			<div>
+				「ドンデンポール」を通過した「朱鷺」の数と<br>
+				射出した「朱鷺」がコート外に出た数が10を超えています。<br>
+				11番と12番の「朱鷺」の数を確認してください。
+			</div>
+		</div>
+		<div v-if="!toki_judge && button_judge">
+			good!
+		</div>
 	</div>
 	<script src="index.js"></script>
 </body>
