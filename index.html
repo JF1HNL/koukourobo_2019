@@ -5,6 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<meta http-equiv="X-UA-Compatible" content="ie=edge">
 		<style>
+			table {
+				border-collapse: collapse;
+			}
+			td {
+				border: solid 1px;
+				padding: 0.5em;
+			}
 			.select{background-color:darkgray}
       .item_box{border: solid 1px black;}
 		</style>
@@ -15,7 +22,7 @@
 	<div id="robokon">
 		高校ロボコン2019用
 		<h1>点数計算ツール</h1>
-		<a href="https://github.com/JF1HNL/koukourobo_2019/blob/master/README.md">使い方はこちら</a>
+		<a href="https://github.com/JF1HNL/koukourobo_2019/blob/master/README.md">使い方やバージョン等はこちら</a>
 		<ol>
 			<li>自立型ロボットが「砂金」を保持して「港エリア」に到達</li>
 			<div class="item_box" @click="button.jiritsu.flag = !button.jiritsu.flag" :class="{select:button.jiritsu.flag}">チェック</div>
@@ -50,7 +57,64 @@
 			</div>
 		</div>
 		<div v-if="!toki_judge && button_judge">
-			good!
+			<table>
+				<tr>
+					<td>条件</td>
+					<td>得点</td>
+				</tr>
+				<tr>
+					<td>自立型ロボットが「砂金」を保持して「港エリア」に到達</td>
+					<td>{{ tensu.jiritsu }}</td>
+				</tr>
+				<tr>
+					<td>「海産物」が「海産物置場」に置かれている数</td>
+					<td>{{ tensu.kaisanbutsu }}</td>
+				</tr>
+				<tr>
+					<td>稲穂上の「割薬」が6個未満で、稲穂が倒れていない状態</td>
+					<td>{{ tensu.warigusuri_hakobi }}</td>
+				</tr>
+				<tr>
+					<td>「割薬」が「三尺玉」の穴に置かれている数</td>
+					<td>{{ tensu.warigusuri }}</td>
+				</tr>
+				<tr>
+					<td>「割薬」6個が1個おきに「三尺玉」の穴に置かれている状態</td>
+					<td>{{ tensu.warigusuri_ikko }}</td>
+				</tr>
+				<tr>
+					<td>「砂金」が「三尺玉」の穴に置かれている数</td>
+					<td>{{ tensu.sakin }}</td>
+				</tr>
+				<tr>
+					<td>「砂金」６個が１個おきに「三尺玉」の穴に置かれている状態</td>
+					<td>{{ tensu.sakin_ikko }}</td>
+				</tr>
+				<tr>
+					<td>「芯星」が「三尺玉」の穴に置かれている数</td>
+					<td>{{ tensu.sinhosi }}</td>
+				</tr>
+				<tr>
+					<td>「芯星」５個全てが「三尺玉」の穴に置かれている状態</td>
+					<td>{{ tensu.sinhosi_subete }}</td>
+				</tr>
+				<tr>
+					<td>「割薬（籾殻）」、「芯星」、「砂金」が「三尺玉」の穴に全て正しく置かれていて、「芯星」と「砂金」が全て交互になっている状態</td>
+					<td>{{ tensu.sansyakudama_complete }}</td>
+				</tr>
+				<tr>
+					<td>「ドンデンポール」を通過した「朱鷺」の数</td>
+					<td>{{ tensu.toki_increase }}</td>
+				</tr>
+				<tr>
+					<td>射出した「朱鷺」がコート外に出た数</td>
+					<td>{{ tensu.toki_decrease }}</td>
+				</tr>
+				<tr>
+					<td>合計</td>
+					<td>{{ tensu. all }}</td>
+				</tr>
+			</table>
 		</div>
 	</div>
 	<script src="index.js"></script>
